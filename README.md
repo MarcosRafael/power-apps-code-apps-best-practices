@@ -1,6 +1,18 @@
-# Power Apps Code Apps - Best Practices
+# Power Apps Code Apps - GitHub Copilot Guide for VS Code
 
-A comprehensive collection of best practices, configurations, and tooling for **Microsoft Power Apps Code Apps** development.
+> **Primary Purpose**: This repository provides a complete **GitHub Copilot configuration guide for Visual Studio Code** tailored for **Microsoft Power Apps Code Apps** development.
+
+A comprehensive collection of best practices, configurations, and tooling for **Microsoft Power Apps Code Apps** development, designed to be used as a **GitHub Copilot workspace configuration** in VS Code.
+
+## 🎯 Primary Goal
+
+**Configure GitHub Copilot in VS Code** with specialized knowledge for Power Apps Code Apps development, including:
+
+- **Custom Instructions** - Auto-applied coding standards for `.ts`, `.tsx`, `.json`, `vite.config.*`, `tsconfig.json`
+- **Specialized Agent** - `Power Platform Expert` agent for Code Apps guidance
+- **Scaffolding Skill** - `power-apps-code-app-scaffold` for project initialization
+- **Plugin** - `power-apps-code-apps` toolkit for Copilot
+- **Quality Gates** - Pre-commit/pre-push hooks + CI/CD pipeline
 
 ## 📋 Overview
 
