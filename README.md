@@ -189,46 +189,15 @@ flowchart LR
 
 ### Supported Connectors (Official)
 
-```mermaid
-graph LR
-    subgraph "Power Platform Connectors"
-        SQL[SQL Server / Azure SQL]
-        SP[SharePoint]
-        O365U[Office 365 Users]
-        O365G[Office 365 Groups]
-        ADX[Azure Data Explorer]
-        ODB[OneDrive for Business]
-        Teams[Microsoft Teams]
-        DV[Dataverse]
-    end
-    
-    subgraph "Code App"
-        Generated[src/generated/services/]
-        Hooks[Custom Hooks]
-        Components[React Components]
-    end
-    
-    Generated --> SQL
-    Generated --> SP
-    Generated --> O365U
-    Generated --> O365G
-    Generated --> ADX
-    Generated --> ODB
-    Generated --> Teams
-    Generated --> DV
-    
-    Hooks --> Generated
-    Components --> Hooks
-```
-
-### Supported Connectors (Official)
-- SQL Server / Azure SQL
-- SharePoint
-- Office 365 Users & Groups
-- Azure Data Explorer
-- OneDrive for Business
-- Microsoft Teams
-- Dataverse (full CRUD, relationships, business logic)
+| Connector | Description |
+|-----------|-------------|
+| **SQL Server / Azure SQL** | Full CRUD operations, stored procedures |
+| **SharePoint** | Document libraries, lists, and sites |
+| **Office 365 Users & Groups** | Profile information, group memberships |
+| **Azure Data Explorer** | Analytics and big data queries |
+| **OneDrive for Business** | File storage and sharing |
+| **Microsoft Teams** | Team collaboration and notifications |
+| **Dataverse** | Full CRUD, relationships, business logic |
 
 ## 📚 Documentation
 
