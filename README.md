@@ -135,7 +135,8 @@ npm run prepare
 │   └── .prettierrc                   # Prettier configuration
 ├── workflows/
 │   └── validate.yml                  # GitHub Actions CI/CD pipeline
-└── power-apps-code-apps-precommit-hooks.md  # Complete hooks documentation
+├── power-apps-code-apps-precommit-hooks.md  # Complete hooks documentation
+├── azure-pipelines.yml               # Azure DevOps pipeline (alternative to GitHub Actions)
 
 docs/
 ├── SETUP.md                          # Detailed setup guide
@@ -206,7 +207,7 @@ flowchart LR
 | [SETUP.md](docs/SETUP.md) | Complete installation and configuration |
 | [BEST_PRACTICES.md](docs/BEST_PRACTICES.md) | Development standards and patterns |
 | [GIT_HOOKS.md](docs/GIT_HOOKS.md) | Git hooks configuration and customization |
-| [CI_CD.md](docs/CI_CD.md) | GitHub Actions pipeline setup |
+| [CI_CD.md](docs/CI_CD.md) | CI/CD pipeline setup — GitHub Actions + Azure DevOps alternatives |
 | [PAC_CLI.md](docs/PAC_CLI.md) | PAC CLI commands and workflows |
 | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Common issues and solutions |
 
@@ -276,6 +277,7 @@ The content in this repository is based on the following sources:
 | **Prettier** | Opinionated code formatter | [prettier.io](https://prettier.io/) |
 | **Vite** | Next generation frontend tooling | [vite.dev](https://vite.dev/) |
 | **Fluent UI React** | Microsoft's official React component library | [react.fluentui.dev](https://react.fluentui.dev/) |
+| **Azure Pipelines** | Alternative CI/CD platform to GitHub Actions | [learn.microsoft.com/azure/devops/pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/) |
 
 ### Specific Resource Attribution
 

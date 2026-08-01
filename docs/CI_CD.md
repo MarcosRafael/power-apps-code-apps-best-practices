@@ -344,6 +344,125 @@ deploy-dev:
   run: npm install -g @microsoft/powerplatform-cli@2.6.0
 ```
 
+## Azure DevOps Pipeline (Alternative to GitHub Actions)
+
+Azure DevOps can be used instead of GitHub Actions for CI/CD with Power Apps Code Apps. The equivalent pipeline is defined in an `azure-pipelines.yml` file at the repository root.
+
+### Differences vs GitHub Actions
+
+| Aspect | GitHub Actions | Azure DevOps |
+|--------|---------------|--------------|
+| **File** | `.github/workflows/validate.yml` | `azure-pipelines.yml` (root of repo) |
+| **Secrets** | GitHub Secrets (Settings → Secrets) | Library → Variable Groups + Service Connections |
+| **Agent** | `runs-on: ubuntu-latest` (hosted) | `pool: vmImage: ubuntu-latest` (hosted) |
+| **Extensions** | Marketplace Actions | Marketplace Tasks (e.g., PowerPlatformToolInstaller) |
+| **PP Auth** | Manual PAC CLI with secrets | `PowerPlatformSetConnectionVariables@2` native task |
+| **Variable Groups** | N/A | `variables: - group: 'name'` |
+
+### Azure Pipeline Configuration (azure-pipelines.yml)
+
+```yaml
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+pr:
+  branches:
+    include:
+      - main
+      - develop
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - group: 'PowerPlatform-CodeApps'
+
+stages:
+  - stage: Validate
+    displayName: 'Validate Code App'
+    jobs:
+      - job: Validate
+        displayName: 'Validate Code App'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js 20'
+
+          - script: npm ci
+            displayName: 'Install dependencies'
+
+          - script: npm run typecheck
+            displayName: 'Run TypeScript type checking'
+
+          - script: npm run lint
+            displayName: 'Run ESLint'
+
+          - script: npm run format:check
+            displayName: 'Check Prettier formatting'
+
+          - script: npm run build
+            displayName: 'Build project'
+
+          - script: |
+              echo "Verifying Power Apps Code Apps configuration..."
+              if ! grep -q '"verbatimModuleSyntax": false' tsconfig.json; then
+                echo "❌ tsconfig.json missing verbatimModuleSyntax: false"
+                exit 1
+              fi
+              echo "✅ tsconfig.json OK"
+              if ! grep -q 'base: "./"' vite.config.ts; then
+                echo "❌ vite.config.ts missing base: \"./\""
+                exit 1
+              fi
+              echo "✅ vite.config.ts OK"
+            displayName: 'Verify Code Apps configuration'
+
+          - task: PowerPlatformToolInstaller@2
+            displayName: 'Install PAC CLI'
+            inputs:
+              DefaultVersion: true
+
+          - script: pac --version
+            displayName: 'Verify PAC CLI'
+
+  - stage: DeployDev
+    displayName: 'Deploy to Development'
+    dependsOn: Validate
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: Deploy
+        displayName: 'Deploy Code App'
+        environment: 'development'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                - script: npm ci && npm run build
+                  displayName: 'Build project'
+                - task: PowerPlatformToolInstaller@2
+                  displayName: 'Install PAC CLI'
+                - task: PowerPlatformSetConnectionVariables@2
+                  displayName: 'Authenticate with Power Platform'
+                  inputs:
+                    authenticationType: 'PowerPlatformSPN'
+                    PowerPlatformSPN: '$(PowerPlatformServiceConnection)'
+                - script: pac code push
+                  displayName: 'Deploy Code App'
+```
+
+### Setup in Azure DevOps
+
+1. **Create Variable Group**: Pipelines → Library → + Variable Group → `PowerPlatform-CodeApps`
+2. **Add variables**: `PPAC_APP_ID`, `PPAC_CLIENT_SECRET`, `PPAC_TENANT_ID`, `PPAC_ENVIRONMENT_URL`
+3. **Create Service Connection**: Project Settings → Service Connections → Power Platform (authentication with SPN)
+4. **Add `azure-pipelines.yml`** to the root of your repository
+5. The pipeline runs automatically on every push and PR
+
 ## Best Practices
 
 1. **Use separate secrets per environment** - Never share prod secrets with dev
@@ -356,9 +475,11 @@ deploy-dev:
 ## References
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [Azure Pipelines Documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/)
 - [PAC CLI Reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference)
 - [Power Platform Environments](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview)
 - [Azure AD App Registration](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app)
+- [PowerPlatformToolInstaller Task](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/power-platform-tool-installer-v2)
 
 ## Sources
 
@@ -366,8 +487,10 @@ deploy-dev:
 |--------|-------------|------|
 | **Microsoft Power Platform CLI** | PAC CLI reference for CI/CD authentication and deployment | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code) |
 | **GitHub Actions Documentation** | Workflow syntax, triggers, and environments | [docs.github.com](https://docs.github.com/en/actions) |
+| **Azure Pipelines Documentation** | Azure DevOps pipeline syntax and tasks | [learn.microsoft.com](https://learn.microsoft.com/en-us/azure/devops/pipelines/) |
 | **Power Platform Admin Center** | Environment management and service principal setup | [admin.powerplatform.microsoft.com](https://admin.powerplatform.microsoft.com/) |
 | **Azure AD App Registration** | Service principal creation and permissions | [learn.microsoft.com](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) |
+| **PowerPlatformToolInstaller** | Azure DevOps task for PAC CLI installation | [learn.microsoft.com](https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/power-platform-tool-installer-v2) |
 | **Power Apps Code Apps Repository** | Official deployment patterns and pac code push examples | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
 
 ### Pipeline Patterns Attribution
