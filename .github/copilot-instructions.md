@@ -21,5 +21,8 @@ This project uses GitHub Copilot with specialized configurations for **Power App
 - **Husky Hooks** (`.github/husky-hooks/`) — Ready-to-use pre-commit and pre-push hooks
 - **GitHub Actions** (`.github/workflows/validate.yml`) — CI/CD pipeline with Code Apps validation
 
-## Source
-All resources sourced from [Awesome GitHub Copilot](https://awesome-copilot.github.com/) — a community-driven collection of GitHub Copilot extensions.
+## Sources
+
+- **[Awesome GitHub Copilot](https://awesome-copilot.github.com/)** — Community-driven collection of GitHub Copilot extensions. Source for the agent, instructions, skill, and plugin configurations.
+- **[Microsoft Power Apps Code Apps Repository](https://github.com/microsoft/PowerAppsCodeApps)** — Official Microsoft samples, templates, and SDK for Power Apps Code Apps.
+- **[Microsoft Learn - Code Apps Documentation](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/)** — Official documentation for development standards, architecture, and deployment.

@@ -301,3 +301,15 @@ taskkill /PID <PID> /F
 2. Review [GIT_HOOKS.md](GIT_HOOKS.md) for hook customization
 3. Configure [CI_CD.md](CI_CD.md) for your deployment needs
 4. Reference [PAC_CLI.md](PAC_CLI.md) for CLI commands
+
+## Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Microsoft Power Apps Code Apps** | Official documentation and templates | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
+| **Microsoft Learn - Code Apps** | Development standards and architecture | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) |
+| **Power Platform CLI** | PAC CLI reference and installation | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction) |
+| **Awesome GitHub Copilot** | Community-driven Copilot extensions | [awesome-copilot.github.com](https://awesome-copilot.github.com/) |
+| **Husky** | Git hooks manager | [typicode.github.io/husky](https://typicode.github.io/husky/) |
+| **lint-staged** | Run linters on staged files | [github.com/okonet/lint-staged](https://github.com/okonet/lint-staged) |
+| **Power Apps SDK** | @microsoft/power-apps npm package | [npmjs.com/package/@microsoft/power-apps](https://www.npmjs.com/package/@microsoft/power-apps) |

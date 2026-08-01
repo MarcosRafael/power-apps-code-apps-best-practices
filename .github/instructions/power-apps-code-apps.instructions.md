@@ -141,3 +141,13 @@ Instructions for generating high-quality Power Apps Code Apps using TypeScript, 
 6. Write maintainable, testable, and well-documented code
 7. Use generated services and models from PAC CLI
 8. Plan for future feature updates and migrations
+
+## Sources
+
+This instructions file is based on the **Power Apps Code Apps** instructions from [Awesome GitHub Copilot](https://awesome-copilot.github.com/instructions/power-apps-code-apps/), a community-driven collection of GitHub Copilot extensions. Content aligns with:
+
+- [Microsoft Power Apps Code Apps Repository](https://github.com/microsoft/PowerAppsCodeApps) — Official SDK, samples (HelloWorld, FluentSample, StaticAssetTracker), and templates (starter, vite)
+- [Microsoft Learn - Code Apps Documentation](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) — Development standards, architecture, and system limits
+- [Power Apps SDK (@microsoft/power-apps)](https://www.npmjs.com/package/@microsoft/power-apps) — npm package documentation
+- [Fluent UI React](https://react.fluentui.dev/) — Microsoft's React component library used in official samples
+- [Vite](https://vite.dev/) — Build tool used by Code Apps templates

@@ -359,3 +359,19 @@ deploy-dev:
 - [PAC CLI Reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference)
 - [Power Platform Environments](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview)
 - [Azure AD App Registration](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app)
+
+## Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Microsoft Power Platform CLI** | PAC CLI reference for CI/CD authentication and deployment | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code) |
+| **GitHub Actions Documentation** | Workflow syntax, triggers, and environments | [docs.github.com](https://docs.github.com/en/actions) |
+| **Power Platform Admin Center** | Environment management and service principal setup | [admin.powerplatform.microsoft.com](https://admin.powerplatform.microsoft.com/) |
+| **Azure AD App Registration** | Service principal creation and permissions | [learn.microsoft.com](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) |
+| **Power Apps Code Apps Repository** | Official deployment patterns and pac code push examples | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
+
+### Pipeline Patterns Attribution
+
+- **Validation workflow** based on [GitHub Actions workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+- **PAC CLI authentication** based on [Microsoft service principal authentication](https://learn.microsoft.com/en-us/power-platform/developer/cli/authentication)
+- **Multi-environment deployment pattern** based on [Power Platform ALM](https://learn.microsoft.com/en-us/power-platform/alm/) best practices

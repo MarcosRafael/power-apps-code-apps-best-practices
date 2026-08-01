@@ -143,6 +143,32 @@ This repository includes GitHub Copilot customizations:
 - [Power Platform CLI Reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference)
 - [Awesome GitHub Copilot](https://awesome-copilot.github.com/)
 
+## 📚 Sources
+
+The content in this repository is based on the following sources:
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Microsoft Power Apps Code Apps** | Official documentation, SDK, templates, and samples | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
+| **Microsoft Learn - Code Apps** | Development standards, architecture, system limits | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) |
+| **Microsoft Power Platform CLI** | PAC CLI reference and authentication guide | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference) |
+| **Awesome GitHub Copilot** | Community-driven GitHub Copilot extensions gallery | [awesome-copilot.github.com](https://awesome-copilot.github.com/) |
+| **Husky** | Git hooks manager for Node.js | [typicode.github.io/husky](https://typicode.github.io/husky/) |
+| **lint-staged** | Run linters against staged git files | [github.com/okonet/lint-staged](https://github.com/okonet/lint-staged) |
+| **ESLint** | Pluggable JavaScript linter | [eslint.org](https://eslint.org/) |
+| **Prettier** | Opinionated code formatter | [prettier.io](https://prettier.io/) |
+| **Vite** | Next generation frontend tooling | [vite.dev](https://vite.dev/) |
+| **Fluent UI React** | Microsoft's official React component library | [react.fluentui.dev](https://react.fluentui.dev/) |
+
+### Specific Resource Attribution
+
+- **Power Platform Expert Agent** — Adapted from the [Awesome Copilot Power Platform Expert agent](https://awesome-copilot.github.com/agent/power-platform-expert/)
+- **Code Apps Instructions** — Based on the [Awesome Copilot Power Apps Code Apps instructions](https://awesome-copilot.github.com/instructions/power-apps-code-apps/)
+- **Code App Scaffold Skill** — Derived from the [Awesome Copilot Power Apps Code App Scaffold skill](https://awesome-copilot.github.com/skill/power-apps-code-app-scaffold/)
+- **Code Apps Plugin** — Based on the [Awesome Copilot Power Apps Code Apps plugin](https://awesome-copilot.github.com/plugin/power-apps-code-apps/)
+- **Pre-commit Hooks Configuration** — Custom implementation based on Power Apps SDK requirements from [Microsoft Power Apps SDK (@microsoft/power-apps)](https://www.npmjs.com/package/@microsoft/power-apps)
+- **GitHub Actions Pipeline** — Based on [PAC CLI deployment patterns](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code) from Microsoft Learn
+
 ## 📄 License
 
 MIT License - Feel free to use, modify, and distribute.

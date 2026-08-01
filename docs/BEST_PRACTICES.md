@@ -505,3 +505,21 @@ pac code push
 - [Official Samples](https://github.com/microsoft/PowerAppsCodeApps/tree/main/samples)
 - [PAC CLI Reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code)
 - [Power Apps SDK](https://www.npmjs.com/package/@microsoft/power-apps)
+
+## Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Microsoft Power Apps Code Apps Repository** | Official SDK, templates, and samples | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
+| **Awesome GitHub Copilot** | Community-driven Copilot extensions gallery | [awesome-copilot.github.com](https://awesome-copilot.github.com/) |
+| **Power Platform CLI Reference** | PAC CLI command documentation | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code) |
+| **Fluent UI React** | Microsoft's official React component library | [react.fluentui.dev](https://react.fluentui.dev/) |
+| **Vite** | Frontend tooling and bundler | [vite.dev](https://vite.dev/) |
+| **TanStack Query** | Async state management for data fetching | [tanstack.com/query](https://tanstack.com/query/latest) |
+
+### Code Patterns Attribution
+
+- **PowerProvider pattern** based on [Microsoft's official Code Apps samples](https://github.com/microsoft/PowerAppsCodeApps/tree/main/samples)
+- **Project structure** aligned with [Power Apps Code Apps documentation](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/)
+- **Power Apps SDK configuration** (`@microsoft/power-apps`) from [npm registry](https://www.npmjs.com/package/@microsoft/power-apps)
+- **Fluent UI patterns** from [Fluent UI React documentation](https://react.fluentui.dev/)

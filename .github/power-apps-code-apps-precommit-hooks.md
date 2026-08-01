@@ -15,6 +15,8 @@ npx husky install
 npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
+> **Note**: The configurations in this document are based on Power Apps SDK requirements from [Microsoft's official documentation](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) and the [Awesome GitHub Copilot](https://awesome-copilot.github.com/) community project.
+
 ## Package.json Configuration
 
 Add to your `package.json`:
@@ -329,3 +331,21 @@ src/generated/
 - [Official Templates](https://github.com/microsoft/PowerAppsCodeApps/tree/main/templates)
 - [Husky Documentation](https://typicode.github.io/husky/)
 - [lint-staged Documentation](https://github.com/okonet/lint-staged)
+
+## Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Microsoft Power Apps Code Apps** | Official SDK requirements and templates | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
+| **Awesome GitHub Copilot** | Community-driven Copilot extensions gallery | [awesome-copilot.github.com](https://awesome-copilot.github.com/) |
+| **Husky** | Git hooks manager for Node.js | [typicode.github.io/husky](https://typicode.github.io/husky/) |
+| **lint-staged** | Run linters on staged git files | [github.com/okonet/lint-staged](https://github.com/okonet/lint-staged) |
+| **Power Apps SDK** | @microsoft/power-apps npm package | [npmjs.com/package/@microsoft/power-apps](https://www.npmjs.com/package/@microsoft/power-apps) |
+| **Vite** | Frontend tooling used by Code Apps | [vite.dev](https://vite.dev/) |
+
+### Validation Rules Attribution
+
+- **`verbatimModuleSyntax: false` check** — Required by [Power Apps SDK](https://www.npmjs.com/package/@microsoft/power-apps) compatibility
+- **`base: "./"` check** — Required for [Power Apps Code Apps deployment](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/)
+- **Port 3000 check** — Required by [Microsoft starter templates](https://github.com/microsoft/PowerAppsCodeApps/tree/main/templates)
+- **PowerProvider.tsx check** — Based on [official Code Apps samples](https://github.com/microsoft/PowerAppsCodeApps/tree/main/samples) pattern

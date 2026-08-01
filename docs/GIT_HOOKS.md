@@ -325,3 +325,22 @@ The same validations run in GitHub Actions (`.github/workflows/validate.yml`):
 - [Husky Documentation](https://typicode.github.io/husky/)
 - [lint-staged Documentation](https://github.com/okonet/lint-staged)
 - [Power Apps Code Apps Requirements](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/)
+
+## Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Husky** | Git hooks manager for Node.js | [typicode.github.io/husky](https://typicode.github.io/husky/) |
+| **lint-staged** | Run linters against staged git files | [github.com/okonet/lint-staged](https://github.com/okonet/lint-staged) |
+| **ESLint** | Pluggable JavaScript linter | [eslint.org](https://eslint.org/) |
+| **Prettier** | Opinionated code formatter | [prettier.io](https://prettier.io/) |
+| **Power Apps SDK** | @microsoft/power-apps npm package | [npmjs.com/package/@microsoft/power-apps](https://www.npmjs.com/package/@microsoft/power-apps) |
+| **Microsoft Learn - Code Apps** | Official requirements and limitations | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/system-limits-configuration) |
+
+### Validation Rules Attribution
+
+- **`verbatimModuleSyntax: false` requirement** — Based on [Power Apps SDK compatibility](https://www.npmjs.com/package/@microsoft/power-apps) documentation
+- **`base: "./"` requirement** — Based on [Power Apps Code Apps deployment](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) documentation
+- **Port 3000 requirement** — Based on official [Microsoft starter templates](https://github.com/microsoft/PowerAppsCodeApps/tree/main/templates)
+- **PowerProvider.tsx pattern** — Based on [official Code Apps samples](https://github.com/microsoft/PowerAppsCodeApps/tree/main/samples)
+- **ESLint rules** — Based on [ESLint TypeScript configuration](https://typescript-eslint.io/) with React hooks plugin

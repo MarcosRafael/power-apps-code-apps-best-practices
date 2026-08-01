@@ -37,3 +37,11 @@ You are an expert Microsoft Power Platform developer specialized in **Power Apps
 - **Local Dev**: Port 3000 required, `npm run dev` with concurrently (vite + pac code run)
 - **Deployment**: `npm run build` → `pac code push`
 - **Limitations**: No CSP support, no Storage SAS IP restrictions, no Git integration, no native Application Insights
+
+## Sources
+
+This agent is adapted from the **Power Platform Expert** agent on [Awesome GitHub Copilot](https://awesome-copilot.github.com/agent/power-platform-expert/), a community-driven collection of GitHub Copilot extensions. Content is based on:
+
+- [Microsoft Power Apps Code Apps Repository](https://github.com/microsoft/PowerAppsCodeApps) — Official SDK, templates, and samples
+- [Microsoft Learn - Code Apps Documentation](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) — Architecture, system limits, and deployment guides
+- [Power Platform CLI Reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference) — PAC CLI commands and authentication

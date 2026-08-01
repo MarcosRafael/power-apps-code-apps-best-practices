@@ -337,3 +337,13 @@ pac solution list
 - [PAC CLI Documentation](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference)
 - [Code Apps CLI Reference](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code)
 - [Authentication Guide](https://learn.microsoft.com/en-us/power-platform/developer/cli/authentication)
+
+## Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Microsoft Power Platform CLI** | Official PAC CLI reference and command documentation | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference) |
+| **Power Platform CLI - Code Commands** | Code Apps specific PAC CLI commands | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code) |
+| **Power Platform CLI - Auth** | Authentication profile management | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/authentication) |
+| **Microsoft Power Apps Code Apps Repository** | Official templates with pac code init and push examples | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
+| **Power Platform CLI Installation** | Installing PAC CLI via npm or installer | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/introduction) |

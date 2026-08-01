@@ -167,6 +167,17 @@ Contributors will be recognized in:
 
 By contributing, you agree that your contributions will be licensed under the MIT License.
 
+## Sources
+
+The content in this repository is based on the following sources:
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Awesome GitHub Copilot** | Community-driven Copilot extensions gallery | [awesome-copilot.github.com](https://awesome-copilot.github.com/) |
+| **Microsoft Power Apps Code Apps** | Official SDK, templates, and samples | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps) |
+| **Microsoft Learn - Code Apps** | Official documentation and architecture | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) |
+| **Power Platform CLI** | PAC CLI reference and installation | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference) |
+
 ---
 
 **Thank you for contributing to better Power Apps Code Apps development!**

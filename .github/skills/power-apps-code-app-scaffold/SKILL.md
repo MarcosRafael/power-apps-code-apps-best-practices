@@ -40,3 +40,11 @@ SQL Server, SharePoint, Office 365 Users/Groups, Azure Data Explorer, OneDrive f
 - Set verbatimModuleSyntax: false
 - Configure vite.config.ts with base: "./"
 - Store sensitive data in data sources, not app code
+
+## Sources
+
+This skill is based on the **Power Apps Code App Scaffold** skill from [Awesome GitHub Copilot](https://awesome-copilot.github.com/skill/power-apps-code-app-scaffold/), a community-driven collection of GitHub Copilot extensions. Content references:
+
+- [Microsoft Power Apps Code Apps Repository](https://github.com/microsoft/PowerAppsCodeApps) — Official templates (starter, vite) and project structure
+- [Microsoft Learn - Code Apps Quickstart](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) — Getting started guides
+- [Power Apps SDK](https://www.npmjs.com/package/@microsoft/power-apps) — npm package for Power Platform connector integration

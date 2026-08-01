@@ -444,3 +444,21 @@ pac code add-data-source -a dataverse -c <CONN_ID>
    - Package.json dependencies
    - Error messages
    - Steps to reproduce
+
+## Sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| **Microsoft Power Apps Code Apps** | Official repository for issues and discussions | [github.com/microsoft/PowerAppsCodeApps](https://github.com/microsoft/PowerAppsCodeApps/issues) |
+| **Microsoft Learn - Code Apps** | Official documentation and limitations | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) |
+| **Power Platform CLI Reference** | PAC CLI error codes and troubleshooting | [learn.microsoft.com](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference) |
+| **Power Platform Community** | Community forum for Power Platform support | [powerusers.microsoft.com](https://powerusers.microsoft.com/) |
+| **Stack Overflow** | Developer Q&A for Power Apps Code Apps | [stackoverflow.com](https://stackoverflow.com/questions/tagged/powerapps) |
+
+### Troubleshooting Sources Attribution
+
+- **Port 3000 conflicts** — Based on [Vite documentation](https://vite.dev/config/server-options.html#server-port) and [Code Apps requirements](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/system-limits-configuration)
+- **PAC CLI authentication errors** — Based on [Power Platform CLI authentication guide](https://learn.microsoft.com/en-us/power-platform/developer/cli/authentication)
+- **Build and deployment issues** — Based on [official Code Apps templates](https://github.com/microsoft/PowerAppsCodeApps/tree/main/templates) and [pac code push documentation](https://learn.microsoft.com/en-us/power-platform/developer/cli/reference/code)
+- **TypeScript configuration** — Based on [Power Apps SDK compatibility](https://www.npmjs.com/package/@microsoft/power-apps)
+- **App initialization errors** — Based on [PowerProvider pattern](https://github.com/microsoft/PowerAppsCodeApps/tree/main/samples) from official samples

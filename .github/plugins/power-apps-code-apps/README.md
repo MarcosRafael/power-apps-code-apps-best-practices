@@ -19,5 +19,10 @@ copilot plugin install power-apps-code-apps@awesome-copilot
 |-------|-------------|
 | `power-platform-expert` | Power Platform expert providing guidance on Code Apps, canvas apps, Dataverse, connectors, and Power Platform best practices |
 
-## Source
-This plugin is part of [Awesome Copilot](https://github.com/github/awesome-copilot), a community-driven collection of GitHub Copilot extensions.
+## Sources
+
+This plugin is based on the **Power Apps Code Apps** plugin from [Awesome GitHub Copilot](https://awesome-copilot.github.com/plugin/power-apps-code-apps/), a community-driven collection of GitHub Copilot extensions.
+
+Additional resources:
+- [Microsoft Power Apps Code Apps Repository](https://github.com/microsoft/PowerAppsCodeApps) — Official SDK and samples
+- [Microsoft Learn - Code Apps Documentation](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/) — Official documentation
