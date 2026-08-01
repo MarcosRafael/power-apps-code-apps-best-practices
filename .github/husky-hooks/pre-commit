@@ -1,0 +1,43 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running Power Apps Code Apps pre-commit checks..."
+
+# 1. Run lint-staged for staged files
+npx lint-staged
+
+# 2. Power Apps Code Apps specific validations
+echo "📋 Validating Power Apps Code Apps configuration..."
+
+# Check tsconfig.json for verbatimModuleSyntax: false
+if ! grep -q '"verbatimModuleSyntax": false' tsconfig.json; then
+  echo "❌ ERROR: tsconfig.json must have 'verbatimModuleSyntax: false' for Power Apps SDK compatibility"
+  exit 1
+fi
+
+# Check vite.config.ts for base: "./"
+if ! grep -q 'base: "./"' vite.config.ts; then
+  echo "❌ ERROR: vite.config.ts must have 'base: \"./\"' for Power Apps deployment"
+  exit 1
+fi
+
+# Check package.json for port 3000 in dev script
+if ! grep -q '"dev": "vite"' package.json && ! grep -q '"dev": "concurrently' package.json; then
+  echo "⚠️  WARNING: Ensure dev server runs on port 3000 (required by Power Apps SDK)"
+fi
+
+# Check for PowerProvider.tsx existence
+if [ ! -f "src/PowerProvider.tsx" ]; then
+  echo "⚠️  WARNING: PowerProvider.tsx not found - required for Power Platform initialization"
+fi
+
+# Check for generated folder structure
+if [ ! -d "src/generated" ]; then
+  echo "ℹ️  INFO: src/generated folder not found - run 'pac code add-data-source' to generate connector services"
+fi
+
+# 3. Validate build passes
+echo "🏗️  Validating build..."
+npm run build --if-present
+
+echo "✅ All pre-commit checks passed!"

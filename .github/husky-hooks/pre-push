@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Running pre-push validation..."
+
+# Full validation suite
+npm run validate
+
+# Check if PAC CLI is available and authenticated
+if command -v pac &> /dev/null; then
+  echo "🔐 Checking PAC CLI authentication..."
+  pac auth list
+else
+  echo "⚠️  PAC CLI not found - install from https://aka.ms/PowerAppsCLI"
+fi
+
+echo "✅ Pre-push validation complete!"

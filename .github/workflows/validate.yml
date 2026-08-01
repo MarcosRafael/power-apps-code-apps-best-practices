@@ -1,0 +1,115 @@
+name: Validate Power Apps Code App
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  validate:
+    name: Validate Code App
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run TypeScript type checking
+        run: npm run typecheck
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Check Prettier formatting
+        run: npm run format:check
+
+      - name: Build project
+        run: npm run build
+
+      - name: Verify Power Apps Code Apps configuration
+        run: |
+          echo "🔍 Verifying Power Apps Code Apps specific configuration..."
+          
+          # Check tsconfig.json
+          if ! grep -q '"verbatimModuleSyntax": false' tsconfig.json; then
+            echo "❌ tsconfig.json missing verbatimModuleSyntax: false"
+            exit 1
+          fi
+          echo "✅ tsconfig.json has verbatimModuleSyntax: false"
+          
+          # Check vite.config.ts
+          if ! grep -q 'base: "./"' vite.config.ts; then
+            echo "❌ vite.config.ts missing base: \"./\""
+            exit 1
+          fi
+          echo "✅ vite.config.ts has base: \"./\""
+          
+          # Check for PowerProvider
+          if [ ! -f "src/PowerProvider.tsx" ]; then
+            echo "⚠️  PowerProvider.tsx not found"
+          else
+            echo "✅ PowerProvider.tsx exists"
+          fi
+          
+          # Check for generated folder
+          if [ ! -d "src/generated" ]; then
+            echo "ℹ️  src/generated folder not found (run 'pac code add-data-source' to generate)"
+          else
+            echo "✅ src/generated folder exists"
+          fi
+
+      - name: Install PAC CLI
+        run: npm install -g @microsoft/powerplatform-cli
+
+      - name: Verify PAC CLI
+        run: pac --version
+
+  # Optional: Deploy to dev environment on main branch
+  deploy-dev:
+    name: Deploy to Dev Environment
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: development
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Install PAC CLI
+        run: npm install -g @microsoft/powerplatform-cli
+
+      - name: Authenticate with Power Platform
+        env:
+          PPAC_APP_ID: ${{ secrets.PPAC_APP_ID }}
+          PPAC_CLIENT_SECRET: ${{ secrets.PPAC_CLIENT_SECRET }}
+          PPAC_TENANT_ID: ${{ secrets.PPAC_TENANT_ID }}
+          PPAC_ENVIRONMENT_URL: ${{ secrets.PPAC_ENVIRONMENT_URL }}
+        run: |
+          pac auth create --applicationId $PPAC_APP_ID --clientSecret $PPAC_CLIENT_SECRET --tenant $PPAC_TENANT_ID --environment $PPAC_ENVIRONMENT_URL
+
+      - name: Deploy Code App
+        run: pac code push
