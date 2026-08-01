@@ -12,6 +12,55 @@ This repository provides everything you need to build high-quality Power Apps Co
 - **CI/CD Pipeline** - GitHub Actions workflow for validation and deployment
 - **VS Code Integration** - Copilot instructions, agents, and skills for AI-assisted development
 
+## 🏗️ Architecture Overview
+
+```mermaid
+graph TB
+    subgraph "Developer Environment"
+        IDE[VS Code + Copilot]
+        Git[Git + Husky Hooks]
+        Node[Node.js 18/20 + npm]
+        PAC[PAC CLI]
+    end
+
+    subgraph "Local Development"
+        Vite[Vite Dev Server :3000]
+        React[React 18 + TypeScript]
+        PowerProvider[PowerProvider.tsx]
+        Generated[src/generated/]
+    end
+
+    subgraph "Quality Gates"
+        PreCommit[Pre-commit Hook]
+        PrePush[Pre-push Hook]
+        CI[GitHub Actions CI]
+    end
+
+    subgraph "Power Platform"
+        Auth[Microsoft Entra ID]
+        Connectors[1,500+ Connectors]
+        Dataverse[Dataverse]
+        Deployment[Code Apps Hosting]
+    end
+
+    IDE --> Git
+    IDE --> Node
+    Git --> PreCommit
+    Git --> PrePush
+    Node --> Vite
+    Vite --> React
+    React --> PowerProvider
+    PowerProvider --> Generated
+    PAC --> Auth
+    Generated --> Connectors
+    Connectors --> Dataverse
+    PreCommit --> CI
+    PrePush --> CI
+    CI --> Deployment
+    Deployment --> Auth
+    Deployment --> Connectors
+```
+
 ## 🚀 Quick Start
 
 ### For New Projects
@@ -99,6 +148,67 @@ docs/
 - **Pre-push**: Full validation suite + PAC CLI authentication check
 - **CI/CD**: Automated validation on every push/PR
 
+## 🔄 Development Workflow
+
+```mermaid
+flowchart LR
+    subgraph "Local"
+        A[Code Changes] --> B[git add]
+        B --> C[git commit]
+        C --> D{Pre-commit Hook}
+        D -->|Pass| E[git push]
+        D -->|Fail| A
+    end
+    
+    subgraph "Remote"
+        E --> F[GitHub Actions CI]
+        F --> G{Validate}
+        G -->|Pass| H[Deploy to Dev]
+        G -->|Fail| I[Block PR]
+    end
+    
+    subgraph "Power Platform"
+        H --> J[pac code push]
+        J --> K[Code App Live]
+    end
+```
+
+## 📁 Repository Structure
+
+### Supported Connectors (Official)
+
+```mermaid
+graph LR
+    subgraph "Power Platform Connectors"
+        SQL[SQL Server / Azure SQL]
+        SP[SharePoint]
+        O365U[Office 365 Users]
+        O365G[Office 365 Groups]
+        ADX[Azure Data Explorer]
+        ODB[OneDrive for Business]
+        Teams[Microsoft Teams]
+        DV[Dataverse]
+    end
+    
+    subgraph "Code App"
+        Generated[src/generated/services/]
+        Hooks[Custom Hooks]
+        Components[React Components]
+    end
+    
+    Generated --> SQL
+    Generated --> SP
+    Generated --> O365U
+    Generated --> O365G
+    Generated --> ADX
+    Generated --> ODB
+    Generated --> Teams
+    Generated --> DV
+    
+    Hooks --> Generated
+    Components --> Hooks
+```
+
 ### Supported Connectors (Official)
 - SQL Server / Azure SQL
 - SharePoint
@@ -122,6 +232,32 @@ docs/
 ## 🤖 AI-Assisted Development
 
 This repository includes GitHub Copilot customizations:
+
+```mermaid
+graph TD
+    subgraph "GitHub Copilot Integration"
+        Agent[Power Platform Expert Agent]
+        Instructions[Code Apps Instructions]
+        Skill[Code App Scaffold Skill]
+        Plugin[Code Apps Plugin]
+    end
+    
+    subgraph "Auto-applied to"
+        TS[.ts / .tsx files]
+        JSON[.json files]
+        Vite[vite.config.*]
+        TSConfig[tsconfig.json]
+    end
+    
+    Agent --> TS
+    Agent --> JSON
+    Instructions --> TS
+    Instructions --> JSON
+    Instructions --> Vite
+    Instructions --> TSConfig
+    Skill --> TS
+    Plugin --> TS
+```
 
 - **Agent**: `Power Platform Expert` - Specialized in Code Apps
 - **Instructions**: Auto-applied to `.ts`, `.tsx`, `.json`, `vite.config.*`, `tsconfig.json`
